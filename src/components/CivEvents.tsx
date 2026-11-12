@@ -199,7 +199,7 @@ export function CivEvents() {
           <div className="civ-overlay-heads">
             {PLAYERS.map((p, i) => (
               <span key={p.id} className="ring ring-yes" style={{ animationDelay: `${400 + i * 150}ms` }}>
-                <PlayerHead player={p} size={72} />
+                <PlayerHead player={p} size={64} />
               </span>
             ))}
           </div>

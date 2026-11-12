@@ -45,7 +45,7 @@ alter publication supabase_realtime add table facts;
 -- ---------------------------------------------------------------
 -- Kopfbilder: privater Storage-Bucket, nur nach Login lesbar.
 -- Danach im Dashboard unter Storage → heads die Dateien
--- max.jpg, julian.jpg, yannick.jpg, eric.jpg hochladen.
+-- lukas.jpg, philipp.jpg, yannick.jpg, ansgar.jpg, hannes.jpg, david.jpg hochladen.
 -- Persönliche Startdaten (Fakten) stehen in seed.local.sql (nicht im Repo).
 -- ---------------------------------------------------------------
 insert into storage.buckets (id, name, public)

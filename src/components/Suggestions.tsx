@@ -103,7 +103,7 @@ export function Suggestions({ all, onPick }: Props) {
                         <HoverCard key={p.id} player={p} entry={a ?? null}>
                           {a ? (
                             <span className={`ring ring-${a.status}`}>
-                              <PlayerHead player={p} size={46} />
+                              <PlayerHead player={p} size={32} />
                             </span>
                           ) : (
                             <span className="head-empty" />

@@ -242,7 +242,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .login form input { min-width: 260px; }
 .login form .error { flex-basis: 100%; margin: 4px 0 0; }
 
-.player-pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; }
+.player-pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; } /* 3 × 2 */
 /* Porträtkarten mit weinrotem Hintergrund */
 .portrait-card {
   display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 14px 10px 16px;
@@ -327,11 +327,14 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
   animation: badge-in .45s var(--ease-out) both;
 }
 
-.day-heads { display: grid; grid-template-columns: repeat(2, max-content); gap: 5px 8px; justify-content: center; }
+/* Sechs Spieler: 3 × 2 Köpfe pro Tag */
+.day-heads { display: grid; grid-template-columns: repeat(3, max-content); gap: 4px 6px; justify-content: center; }
 .entry { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; animation: pop-in .35s var(--ease-out) both; }
 .day-heads .entry:nth-child(2) { animation-delay: .04s; }
 .day-heads .entry:nth-child(3) { animation-delay: .08s; }
 .day-heads .entry:nth-child(4) { animation-delay: .12s; }
+.day-heads .entry:nth-child(5) { animation-delay: .16s; }
+.day-heads .entry:nth-child(6) { animation-delay: .2s; }
 .entry small { font-size: .7rem; color: var(--text-dim); margin-top: 3px; font-weight: 600; }
 
 /* ---------- Ansicht: Woche | Monat ---------- */
@@ -366,7 +369,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
   display: block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted);
 }
 .week-list .day-weekend .day-weekday { color: var(--weekend-text); }
-.week-list .day .day-heads { flex: 1; grid-template-columns: repeat(4, max-content); justify-content: start; gap: 4px 10px; }
+.week-list .day .day-heads { flex: 1; grid-template-columns: repeat(6, max-content); justify-content: start; gap: 4px 10px; }
 .week-list .day .day-heads:empty::after {
   content: 'Noch kein Held hat sich gemeldet'; font-size: .85rem; font-style: italic; color: var(--muted);
 }
@@ -525,7 +528,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .suggestion-date { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: #f3e7c4; display: flex; align-items: baseline; gap: 8px; }
 .suggestion-date small { font-family: var(--font-body); font-weight: 400; color: var(--text-dim); font-size: .8rem; }
 .suggestion-heads { display: flex; gap: 5px; }
-.head-empty { width: 50px; height: 50px; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, .22); background: rgba(0, 0, 0, .15); }
+.head-empty { width: 36px; height: 36px; border-radius: 50%; border: 2px dashed rgba(255, 255, 255, .22); background: rgba(0, 0, 0, .15); }
 .suggestion-civ { font-size: .8rem; font-weight: 700; color: var(--gold-bright); animation: badge-in .45s var(--ease-out) both; }
 
 .score { font-size: .9rem; color: var(--text-dim); display: flex; flex-direction: column; align-items: flex-end; line-height: 1.1; }
@@ -659,7 +662,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 
 .leaders-grid {
   flex: 1; min-height: 0; overflow-y: auto; padding: 6px 12px 14px;
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(620px, 1fr); gap: 10px;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: minmax(620px, 1fr); gap: 10px;
 }
 .leader-card { perspective: 1600px; animation: card-rise .5s var(--ease-out) both; }
 @keyframes card-rise { from { opacity: 0; transform: translateY(24px); } }
@@ -1029,8 +1032,12 @@ button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
   .view-toggle, .today-btn { position: static; transform: none; }
   .today-btn:not(:disabled):active { transform: scale(.96); }
 }
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .day-heads .head { width: 30px !important; height: 30px !important; }
+  .week-list .day .day-heads .head { width: 40px !important; height: 40px !important; }
+}
+@media (max-width: 900px) {
+  .day-heads .head { width: 24px !important; height: 24px !important; font-size: 11px !important; }
   .week-list .day .day-heads .head { width: 40px !important; height: 40px !important; }
   .today-btn { position: static; transform: none; }
   .today-btn:not(:disabled):active { transform: scale(.96); }
@@ -1046,12 +1053,13 @@ button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
   .day-number { font-size: .8rem; }
   .civ-badge { font-size: .55rem; padding: 1px 4px; }
   .day-heads { gap: 2px; }
-  .day-heads .head { width: 20px !important; height: 20px !important; font-size: 9px !important; border-width: 1px; }
+  .day-heads .head { width: 13px !important; height: 13px !important; font-size: 7px !important; border-width: 1px; }
+  .day-heads { gap: 2px 1px; }
   .entry small { display: none; }
   .ring { padding: 1px; }
   .panel-header h2 { font-size: 1rem; }
-  .suggestion-heads .head { width: 34px !important; height: 34px !important; }
-  .head-empty { width: 38px; height: 38px; }
+  .suggestion-heads .head { width: 30px !important; height: 30px !important; }
+  .head-empty { width: 34px; height: 34px; }
 
   /* Kopfzeile kompakt: Titel oben, Bedienung darunter */
   .topbar { justify-content: center; padding: 8px 10px; margin-bottom: 10px; gap: 8px; }
@@ -1073,7 +1081,8 @@ button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
   .week-list .day { min-height: 72px; gap: 10px; padding: 8px 10px; }
   .week-list .day .day-number { width: 34px; font-size: 1.3rem; }
   .week-list .day .day-heads { gap: 4px 8px; }
-  .week-list .day .day-heads .head { width: 38px !important; height: 38px !important; font-size: 15px !important; border-width: 2px; }
+  .week-list .day .day-heads .head { width: 34px !important; height: 34px !important; font-size: 14px !important; border-width: 2px; }
+  .week-list .day .day-heads { gap: 4px 5px; }
   .week-list .day .entry small { display: block; }
   .week-list .day .civ-badge { font-size: .62rem; padding: 1px 6px; }
 }
@@ -1081,7 +1090,7 @@ button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 @media (max-width: 360px) {
   .week-list .day .civ-badge-label { display: none; }
   .week-list .day .civ-badge::before { content: '⚔'; }
-  .week-list .day .day-heads .head { width: 34px !important; height: 34px !important; }
+  .week-list .day .day-heads .head { width: 30px !important; height: 30px !important; }
 }
 
 /* ---------- Logbuch ---------- */
@@ -1270,10 +1279,10 @@ button.logbook-quote:not(:disabled):active { transform: none; }
   /* Civ-Abzeichen sitzt oben rechts neben der Zahl statt in einer eigenen Zeile */
   .calendar-panel .day .civ-badge { position: absolute; top: 4px; right: 4px; font-size: .62rem; padding: 0 6px; line-height: 1.4; }
 
-  /* Kopfgröße aus der Zellgröße: oben Zahl (~25px), zwei Kopfzeilen samt Ring und Abstand */
+  /* Kopfgröße aus der Zellgröße: oben Zahl (~25px), zwei Kopfzeilen à drei Köpfen samt Ring und Abstand */
   .calendar-panel .day .day-heads {
-    --h: clamp(18px, min(calc((100cqh - 46px) / 2), calc((100cqw - 34px) / 2)), 40px);
-    flex: 1 1 0; min-height: 0; align-content: center; gap: 4px 8px;
+    --h: clamp(16px, min(calc((100cqh - 46px) / 2), calc((100cqw - 40px) / 3)), 40px);
+    flex: 1 1 0; min-height: 0; align-content: center; gap: 4px 6px;
   }
   .calendar-panel .day .day-heads .head {
     width: var(--h) !important; height: var(--h) !important; font-size: calc(var(--h) * .45) !important;
@@ -1292,7 +1301,7 @@ button.logbook-quote:not(:disabled):active { transform: none; }
   .calendar-panel .week-list .day .civ-badge { position: static; font-size: .75rem; padding: 1px 10px; }
   .calendar-panel .week-list .day .day-heads {
     --h: clamp(22px, calc(100cqh - 22px), 52px);
-    grid-template-columns: repeat(4, max-content); justify-content: start; align-content: center; gap: 4px 14px;
+    grid-template-columns: repeat(6, max-content); justify-content: start; align-content: center; gap: 4px 12px;
   }
 
   /* Zitat kompakt unter dem Kalender */

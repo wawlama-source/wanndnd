@@ -1,7 +1,7 @@
 import { PLAYERS } from '../players'
 import { shortTime, type Availability } from '../types'
 
-/** Spätester „ab“-Zeitpunkt, wenn alle vier zugesagt haben, sonst null. */
+/** Spätester „ab“-Zeitpunkt, wenn alle Spieler zugesagt haben, sonst null. */
 export function civNight(entries: Availability[]): { start: string | null } | null {
   const yes = entries.filter((a) => a.status === 'yes')
   if (yes.length < PLAYERS.length) return null
