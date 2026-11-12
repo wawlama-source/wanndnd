@@ -13,12 +13,12 @@ const heads = `${import.meta.env.BASE_URL}heads/`
 
 // Beinamen sind Platzhalter, bis die Gruppe eigene vergibt.
 export const PLAYERS: Player[] = [
-  { id: 'lukas', name: 'Lukas', title: 'Abenteurer', color: '#e76f51', head: `${heads}lukas.jpg` },
-  { id: 'philipp', name: 'Philipp', title: 'Abenteurer', color: '#2a9d8f', head: `${heads}philipp.jpg` },
-  { id: 'yannick', name: 'Yannick', title: 'Abenteurer', color: '#e9c46a', head: `${heads}yannick.jpg` },
-  { id: 'ansgar', name: 'Ansgar', title: 'Abenteurer', color: '#6a4c93', head: `${heads}ansgar.jpg` },
-  { id: 'gerrit', name: 'Gerrit', title: 'Abenteurer', color: '#457b9d', head: `${heads}gerrit.jpg` },
-  { id: 'david', name: 'David', title: 'Abenteurer', color: '#b5838d', head: `${heads}david.jpg` },
+  { id: 'lukas', name: 'Lukas', title: 'Der irre Ire', color: '#e76f51', head: `${heads}lukas.jpg` },
+  { id: 'philipp', name: 'Philipp', title: 'Strammborn', color: '#2a9d8f', head: `${heads}philipp.jpg` },
+  { id: 'yannick', name: 'Yannick', title: 'Professioneller Laie', color: '#e9c46a', head: `${heads}yannick.jpg` },
+  { id: 'ansgar', name: 'Ansgar', title: 'Ultras GEler', color: '#6a4c93', head: `${heads}ansgar.jpg` },
+  { id: 'gerrit', name: 'Gerrit', title: 'Der Neue Alte', color: '#457b9d', head: `${heads}gerrit.jpg` },
+  { id: 'david', name: 'David', title: 'Deutsche Mark Forster', color: '#b5838d', head: `${heads}david.jpg` },
 ]
 
 export const playerById = (id: PlayerId) => PLAYERS.find((p) => p.id === id)!
