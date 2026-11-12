@@ -19,24 +19,25 @@ const MAX_TOASTS = 4
 
 const PHRASES: Record<Status | 'deleted', string[]> = {
   yes: [
-    'schließt ein Bündnis',
-    'schickt eine Handelsroute',
-    'stellt Truppen bereit',
-    'unterzeichnet einen Freundschaftsvertrag',
+    'schließt sich der Gruppe an',
+    'schärft die Klinge',
+    'schnürt den Rucksack',
+    'würfelt schon mal Initiative',
+    'bestellt einen Krug am Stammtisch',
   ],
   maybe: [
-    'hält sich diplomatisch bedeckt',
-    'verlangt Bedenkzeit',
-    'prüft die Lage',
-    'schickt einen zögerlichen Gesandten',
+    'legt einen Rettungswurf ab',
+    'befragt das Orakel',
+    'zögert vor der Kerkertür',
+    'schickt einen unentschlossenen Raben',
   ],
   no: [
-    'verweigert den Durchmarsch',
-    'ruft den Notstand aus',
-    'bricht die Verhandlungen ab',
-    'zieht sich hinter die Stadtmauern zurück',
+    'macht eine lange Rast',
+    'wurde von einem Mimic verschluckt',
+    'verbarrikadiert sich in der Taverne',
+    'verschwindet durch ein Portal',
   ],
-  deleted: ['zieht den Gesandten ab', 'streicht den Eintrag aus den Annalen'],
+  deleted: ['verwischt die eigenen Spuren', 'streicht den Eintrag aus der Chronik'],
 }
 
 type Change = { player: PlayerId; day: string; status: Status | null; denounce: boolean }
@@ -68,7 +69,7 @@ function daysLabel(days: string[]): string {
 
 /**
  * Beobachtet alle Einträge (Realtime über `AllAvailabilityProvider`) und zeigt
- * „Weltwunder vollendet“, wenn ein Civ-Abend zustande kommt, sowie Diplomatie-Toasts,
+ * „Natürliche 20“, wenn ein D&D-Abend zustande kommt, sowie Raben-Toasts,
  * wenn andere etwas eintragen.
  */
 export function CivEvents() {
@@ -107,14 +108,14 @@ export function CivEvents() {
       const name = playerById(player).name
       const detail = daysLabel(list.map((c) => c.day))
       if (tone === 'denounce') {
-        add({ player, tone, text: `⚔ ${name} hat euch denunziert!`, detail: `Absage an einem fast fertigen Civ-Abend · ${detail}` })
+        add({ player, tone, text: `🗡 ${name} fällt der Gruppe in den Rücken!`, detail: `Absage an einem fast vollzähligen D&D-Abend · ${detail}` })
       } else {
         add({ player, tone, text: `${name} ${pick(PHRASES[tone as Status | 'deleted'])}`, detail })
       }
     })
 
     for (const day of ruined) {
-      add({ player: null, tone: 'ruin', text: 'Ein Weltwunder ist eingestürzt', detail: `Der Civ-Abend am ${dayLabel(day)} fällt aus` })
+      add({ player: null, tone: 'ruin', text: 'Kritischer Fehlschlag: eine Natürliche 1', detail: `Der D&D-Abend am ${dayLabel(day)} fällt aus` })
     }
 
     if (next.length) setToasts((prev) => [...prev, ...next].slice(-MAX_TOASTS))
@@ -185,8 +186,8 @@ export function CivEvents() {
         <CivOverlay
           key={wonder.day}
           variant="wonder"
-          kicker="Weltwunder vollendet"
-          title="Civ-Abend!"
+          kicker="Natürliche 20 – die Gruppe ist vollzählig"
+          title="D&D-Abend!"
           subtitle={
             <>
               {format(parseISO(wonder.day), 'EEEE, d. MMMM', { locale: de })}
@@ -225,7 +226,7 @@ function ToastItem({ toast, onDismiss }: { toast: Toast; onDismiss: (id: number)
         </HoverCard>
       ) : (
         <span className="toast-icon" aria-hidden>
-          🏚
+          💀
         </span>
       )}
       <span className="toast-text">

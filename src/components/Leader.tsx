@@ -70,7 +70,7 @@ interface FrontProps {
   visibleRows?: number
 }
 
-/** Vorderseite der Anführer-Karte – im Anführer-Fenster und im Hover-Tooltip. */
+/** Vorderseite der Heldenkarte – im Helden-Fenster und im Hover-Tooltip. */
 export function LeaderFront({
   player,
   stats,
@@ -97,9 +97,9 @@ export function LeaderFront({
       <KnownFor player={player} me={me} />
 
       <div className="leader-progress">
-        <h4>▾ Zugesagte Termine</h4>
+        <h4>▾ Kommende Abenteuer</h4>
         {stats.upcoming.length === 0 ? (
-          <p className="leader-empty">Keine kommenden Zusagen</p>
+          <p className="leader-empty">Keine Abenteuer in Sicht</p>
         ) : (
           <ul>
             {stats.upcoming.map((a) => (
@@ -232,7 +232,7 @@ function KnownFor({ player, me }: { player: Player; me?: PlayerId }) {
               }}
               maxLength={160}
               rows={2}
-              placeholder={`Wofür ist ${player.name} bekannt?`}
+              placeholder={`Was erzählen sich die Barden über ${player.name}?`}
               autoFocus
             />
             <div className="fact-form-actions">
@@ -262,7 +262,7 @@ function KnownFor({ player, me }: { player: Player; me?: PlayerId }) {
             )}
           </div>
         ) : (
-          <p className="muted">Die Geschichtsbücher sind noch leer.</p>
+          <p className="muted">Noch singt kein Barde davon.</p>
         )}
         {error && <p className="error">{error}</p>}
       </div>

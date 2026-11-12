@@ -3,6 +3,7 @@ import { SHARED_EMAIL, supabase } from '../lib/supabase'
 import { PLAYERS, type PlayerId } from '../players'
 import { PlayerHead } from './PlayerHead'
 import { QuoteBar } from './QuoteBar'
+import { D20 } from './D20'
 
 interface Props {
   loggedIn: boolean
@@ -20,22 +21,22 @@ export function LoginScreen({ loggedIn, onPick }: Props) {
     setError(null)
     const { error } = await supabase.auth.signInWithPassword({ email: SHARED_EMAIL, password })
     setBusy(false)
-    if (error) setError('Falsches Passwort.')
+    if (error) setError('Falsches Losungswort. Die Torwache lässt dich nicht rein.')
   }
 
   return (
     <div className="login">
-      <h1 className="game-title">Wann Civ spielen?</h1>
+      <h1 className="game-title"><D20 />Wann D&amp;D spielen?</h1>
       <section className="panel login-panel">
         <div className="panel-header">
-          <h2>{loggedIn ? 'Wähle deinen Anführer' : 'Zutritt zum Reich'}</h2>
+          <h2>{loggedIn ? 'Wähle deinen Helden' : 'Das Tor zur Taverne'}</h2>
         </div>
         <div className="panel-body">
           {!loggedIn ? (
             <form onSubmit={submit}>
               <input
                 type="password"
-                placeholder="Gemeinsames Passwort"
+                placeholder="Losungswort der Gruppe"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoFocus

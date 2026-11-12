@@ -16,7 +16,7 @@ interface Props {
   onClose: () => void
 }
 
-/** Anführer-Karte als Panel von unten. Schließen: daneben tippen, nach unten wischen, × oder Esc. */
+/** Heldenkarte als Panel von unten. Schließen: daneben tippen, nach unten wischen, × oder Esc. */
 export function LeaderSheet({ player, entry, pickDay, onClose }: Props) {
   const { all } = useAllAvailability()
   const me = useMe()

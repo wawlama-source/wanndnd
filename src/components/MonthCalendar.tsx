@@ -28,7 +28,7 @@ const WEEKDAYS = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
 const iso = (d: Date) => format(d, 'yyyy-MM-dd')
 
 type View = 'month' | 'week'
-const VIEW_KEY = 'wanncivspielen.view'
+const VIEW_KEY = 'wanndnd.view'
 const PHONE = '(max-width: 600px)'
 
 /** Gespeicherte Ansicht, sonst: Handy → Woche, sonst Monat. */

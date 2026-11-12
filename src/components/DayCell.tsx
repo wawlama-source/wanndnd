@@ -54,7 +54,7 @@ export function DayCell({ date, entries, inMonth, isPast, isToday, isSelected, o
       </span>
       {night && (
         <span className="civ-badge">
-          <span className="civ-badge-label">Civ-Abend</span>
+          <span className="civ-badge-label">D&amp;D-Abend</span>
           {night.start ? ` ab ${night.start}` : ''}!
         </span>
       )}

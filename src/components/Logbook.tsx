@@ -13,7 +13,7 @@ const targetsOf = (e: LogEntry) => e.targets ?? []
 
 type Filter = 'all' | 'me' | LogKind
 
-/** Button „Logbuch“ in der Kopfzeile mit Zähler für ungelesene Einträge der anderen. */
+/** Button „Chronik“ (Logbuch) in der Kopfzeile mit Zähler für ungelesene Einträge der anderen. */
 export function LogbookButton({ me }: { me: PlayerId }) {
   const { entries } = useLogbook()
   const [lastRead, setLastRead] = useState(() => Date.parse(loadLastRead(me)) || 0)
@@ -38,9 +38,9 @@ export function LogbookButton({ me }: { me: PlayerId }) {
           setOpenedWith(lastRead)
           markRead()
         }}
-        aria-label={unread ? `Logbuch, ${unread} ungelesen` : 'Logbuch'}
+        aria-label={unread ? `Chronik, ${unread} ungelesen` : 'Chronik'}
       >
-        📜 Logbuch
+        📜 Chronik
         {unread > 0 && openedWith === null && (
           <span className="logbook-badge" aria-hidden>
             {unread > 9 ? '9+' : unread}
@@ -161,14 +161,14 @@ function LogbookDialog({ me, since, onClose }: { me: PlayerId; since: number; on
       <section
         className="panel logbook"
         role="dialog"
-        aria-label="Logbuch"
+        aria-label="Chronik der Gruppe"
         onClick={(e) => {
           e.stopPropagation()
           setPickerFor(null)
         }}
       >
         <div className="panel-header leaders-header">
-          <h2>Logbuch</h2>
+          <h2>Chronik der Gruppe</h2>
           <button className="close-btn" onClick={() => setClosing(true)} aria-label="Schließen">
             ×
           </button>
@@ -239,7 +239,7 @@ function LogbookDialog({ me, since, onClose }: { me: PlayerId; since: number; on
               <span className="logbook-keys"> · Shift+Enter für neue Zeile</span>
             </span>
             <button type="submit" className="primary" disabled={!text.trim() || busy}>
-              Verlauten lassen
+              Niederschreiben
             </button>
           </div>
           {error && <p className="error">{error}</p>}
@@ -267,7 +267,7 @@ function LogbookDialog({ me, since, onClose }: { me: PlayerId; since: number; on
 
         <ol className="logbook-list" ref={listRef}>
           {loaded && entries.length === 0 && (
-            <li className="logbook-empty muted">Noch ist das Logbuch leer. Wer traut sich zuerst?</li>
+            <li className="logbook-empty muted">Die Chronik ist noch leer. Wer schreibt das erste Kapitel?</li>
           )}
           {entries.filter((e) => matches(e, filter, me)).map((e) => {
             const author = playerById(e.author)
@@ -316,7 +316,7 @@ function LogbookDialog({ me, since, onClose }: { me: PlayerId; since: number; on
                         <QuoteContent entry={byId.get(e.quote_id)!} />
                       </button>
                     ) : (
-                      <div className="logbook-quote logbook-quote-gone">Zitat aus grauer Vorzeit</div>
+                      <div className="logbook-quote logbook-quote-gone">Zitat aus einem vergessenen Zeitalter</div>
                     ))}
                   <p>{e.text}</p>
                   <Reactions
@@ -409,11 +409,11 @@ function Reactions({ me, list, picking, onPick, onTogglePicker, onQuote }: React
 }
 
 const PLACEHOLDER: Record<LogKind, string> = {
-  announce: 'Was sollen die anderen fürs nächste Mal wissen?',
-  slander: 'Wer hat letzte Partie wen verraten?',
-  report: 'Was ist passiert?',
-  friendship: 'Wem willst du ewige Freundschaft schwören?',
-  reconcile: 'Mit wem begräbst du das Kriegsbeil?',
+  announce: 'Was soll die Gruppe vor dem nächsten Abenteuer wissen?',
+  slander: 'Welches Gerücht macht gerade in der Taverne die Runde?',
+  report: 'Was ist im letzten Abenteuer passiert?',
+  friendship: 'Mit wem schwörst du ewige Gefährtenschaft?',
+  reconcile: 'Mit wem begräbst du die Streitaxt?',
 }
 
 function when(t: number) {

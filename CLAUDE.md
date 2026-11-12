@@ -1,6 +1,6 @@
-# CLAUDE.md – Wann Civ spielen?
+# CLAUDE.md – Wann D&D spielen?
 
-Kleine Web-App, mit der vier Freunde (Max, Julian, Yannick, Eric) eintragen, an welchen Tagen und ab wann sie Zeit für Civilization haben. Sie ersetzt das Abstimmen im Gruppenchat. Die App ist für diese vier Leute gebaut, nicht für die Allgemeinheit. Pragmatik und Spaß gehen vor Skalierbarkeit.
+Kleine Web-App, mit der vier Freunde (Max, Julian, Yannick, Eric) eintragen, an welchen Tagen und ab wann sie Zeit für eine Runde Dungeons & Dragons haben (hervorgegangen aus der Civ-Version „Wann Civ spielen?“). Sie ersetzt das Abstimmen im Gruppenchat. Die App ist für diese vier Leute gebaut, nicht für die Allgemeinheit. Pragmatik und Spaß gehen vor Skalierbarkeit.
 
 ## Zusammenarbeit
 
@@ -13,7 +13,7 @@ Kleine Web-App, mit der vier Freunde (Max, Julian, Yannick, Eric) eintragen, an 
 ## Stack & Hosting
 
 - Vite + React 19 + TypeScript, ohne Router (nur die Zustände Login → Kalender), weil GitHub Pages bei Routen 404 liefert.
-- **Hosting: GitHub Pages**, also nur statisch. `base: '/wanncivspielen/'` in `vite.config.ts` muss zum Repo-Namen passen. Das Deployment läuft über `.github/workflows/deploy.yml` bei jedem Push auf `main`.
+- **Hosting: GitHub Pages**, also nur statisch. `base: '/wanndnd/'` in `vite.config.ts` muss zum Repo-Namen passen. Das Deployment läuft über `.github/workflows/deploy.yml` bei jedem Push auf `main`.
 - **Daten: Supabase.** Ein einziger gemeinsamer Auth-User (gemeinsames Passwort). Danach wählt jeder seinen Namen, gespeichert in `localStorage`. RLS erlaubt alles für `authenticated`. Unter Freunden ist dieses Vertrauensmodell gewollt, die Datenbank prüft deshalb nicht, wer wer ist.
 - Keine UI- oder Animationsbibliothek: reines CSS (`src/styles.css`) und `date-fns`.
 
@@ -48,7 +48,8 @@ Kleine Web-App, mit der vier Freunde (Max, Julian, Yannick, Eric) eintragen, an 
 
 ## Design
 
-- **Stil eines 4X-Strategiespiels**, angelehnt an die Civ-6-UI, aber ohne echte Spielgrafiken oder Logos: dunkelblaue Panels mit Goldrahmen, petrolfarbene Titelleisten, weinrote Porträtkarten, Pillen-Buttons mit Goldrand, Hex-Hintergrund. Schriften: Cinzel (Überschriften) und Source Sans 3 (Fließtext), beide über Google Fonts in `index.html`.
+- **Fantasy-Rollenspiel-Look (D&D)**, ohne echte Spielgrafiken oder Logos: Steingewölbe bei Fackelschein als Hintergrund (SVG-Quader + Rauschen + warme Lichtkegel, aufsteigende Glutfunken), Lederpanels mit Messingnieten, blutrote Titelleisten, Pergament-Login, weinrote Heldenkarten, arkan-violetter Akzent (`--cyan`) für Auswahl und Stufenaufstieg. Ein W20 (`src/components/D20.tsx`, auch `public/favicon.svg`) steht vor dem Titel. Schriften über Google Fonts in `index.html`: Grenze Gotisch (`--font-title`, Spieltitel/Overlays), Almendra (`--font-display`, Überschriften/Zahlen), Alegreya Sans (`--font-body`). Die Texturen sind Tokens (`--grain`, `--stones`); die D&D-Feinschliff-Regeln stehen am Ende von `styles.css`.
+- **Wording:** D&D-Abend (alle vier „Kann“), Helden statt Anführer, Charakterbogen statt Statistik, Chronik statt Logbuch, Ränge der Gruppe statt Zeitalter (`eras.ts`), „Natürliche 20“ / „Natürliche 1“ statt Weltwunder vollendet/eingestürzt. Interne Namen (`civNight`, `CivEvents`, `.civ-*`-Klassen) sind bewusst geblieben.
 - Alle Farben sind Tokens in `:root` in `styles.css`. Statusfarben: `--yes` grün, `--maybe` gelb, `--no` rot. Der Status erscheint als farbiger Ring um den Kopf (`.ring .ring-<status>`).
 - Wochenenden sind hervorgehoben (getönt, Abstand vor dem Samstag). Tage, an denen alle vier können, sind gold („Civ-Abend!“).
 - Animationen sind ausdrücklich gewünscht (Übergänge, Popover, Listen). Alle laufen in CSS oder über die Web Animations API und respektieren `prefers-reduced-motion`. JS-Animationen prüfen das selbst.

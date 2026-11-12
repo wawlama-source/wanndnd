@@ -14,7 +14,7 @@ interface Props {
 
 const OUT_MS = 300
 
-/** Vollbild-Einblendung im Stil „Weltwunder vollendet“ bzw. „Neues Zeitalter“. */
+/** Vollbild-Einblendung: „Natürliche 20“ (D&D-Abend steht) bzw. „Stufenaufstieg“. */
 export function CivOverlay({ variant, kicker, title, subtitle, children, duration = 7000, onClose }: Props) {
   const [closing, setClosing] = useState(false)
 
@@ -50,7 +50,7 @@ export function CivOverlay({ variant, kicker, title, subtitle, children, duratio
         <h2 className="game-title civ-overlay-title">{title}</h2>
         {subtitle && <p className="civ-overlay-subtitle">{subtitle}</p>}
         {children}
-        <p className="civ-overlay-hint">Klicken zum Fortfahren</p>
+        <p className="civ-overlay-hint">Klicken, um weiterzuziehen</p>
       </div>
     </div>,
     document.body,

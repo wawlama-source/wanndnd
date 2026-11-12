@@ -5,7 +5,7 @@ import { civNights } from '../lib/civ'
 import { ERAS, eraIndex } from '../lib/eras'
 import { CivOverlay } from './CivOverlay'
 
-const SEEN_KEY = 'wanncivspielen.era'
+const SEEN_KEY = 'wanndnd.era'
 
 function loadSeen(): number {
   try {
@@ -15,7 +15,7 @@ function loadSeen(): number {
   }
 }
 
-/** Zeitalter-Abzeichen in der Kopfzeile; steigt mit jedem gespielten Civ-Abend. */
+/** Rang-Abzeichen der Gruppe in der Kopfzeile; steigt mit jedem gespielten D&D-Abend. */
 export function EraBadge() {
   const { all, loaded } = useAllAvailability()
   const [seen, setSeen] = useState(loadSeen)
@@ -30,8 +30,8 @@ export function EraBadge() {
   const next = ERAS[idx + 1]
   const progress = next ? (played - era.from) / (next.from - era.from) : 1
   const title = next
-    ? `${played} Civ-Abende gespielt · noch ${next.from - played} bis zum Zeitalter ${next.name}`
-    : `${played} Civ-Abende gespielt · höchstes Zeitalter erreicht`
+    ? `${played} Abenteuer bestanden · noch ${next.from - played} bis zum Rang „${next.name}“`
+    : `${played} Abenteuer bestanden · höchster Rang erreicht`
 
   function acknowledge() {
     setSeen(idx)
@@ -56,9 +56,9 @@ export function EraBadge() {
       {idx > seen && (
         <CivOverlay
           variant="era"
-          kicker="Ein neues Zeitalter beginnt"
+          kicker="Stufenaufstieg!"
           title={era.name}
-          subtitle={`${played} gemeinsame${played === 1 ? 'r Civ-Abend hat' : ' Civ-Abende haben'} euch hierher gebracht`}
+          subtitle={`${played} gemeinsame${played === 1 ? 's Abenteuer hat' : ' Abenteuer haben'} euch so weit gebracht`}
           onClose={acknowledge}
         >
           <div className="civ-overlay-era-icon" aria-hidden>

@@ -30,11 +30,11 @@ export type LogKind = 'announce' | 'report' | 'friendship' | 'reconcile' | 'slan
 
 /** targeted: kann an bestimmte Spieler gerichtet werden */
 export const LOG_KINDS: Record<LogKind, { label: string; long: string; icon: string; targeted: boolean }> = {
-  announce: { label: 'Ankündigung', long: 'Ankündigung', icon: '📯', targeted: false },
-  report: { label: 'Bericht', long: 'Bericht', icon: '📜', targeted: false },
-  friendship: { label: 'Freundschaft', long: 'Freundschaftsbekundung', icon: '🤝', targeted: true },
-  reconcile: { label: 'Versöhnung', long: 'Versöhnung', icon: '🕊️', targeted: true },
-  slander: { label: 'Verleumdung', long: 'Verleumdung', icon: '🗡️', targeted: true },
+  announce: { label: 'Aushang', long: 'Aushang am Questbrett', icon: '📯', targeted: false },
+  report: { label: 'Abenteuerbericht', long: 'Abenteuerbericht', icon: '📜', targeted: false },
+  friendship: { label: 'Gefährtenschwur', long: 'Schwur der Gefährtenschaft', icon: '🤝', targeted: true },
+  reconcile: { label: 'Versöhnung', long: 'Versöhnung am Lagerfeuer', icon: '🔥', targeted: true },
+  slander: { label: 'Tavernengerücht', long: 'Tavernengerücht', icon: '🗡️', targeted: true },
 }
 export const LOG_KIND_ORDER = Object.keys(LOG_KINDS) as LogKind[]
 

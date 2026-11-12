@@ -1,31 +1,35 @@
 /* =====================================================================
-   Wann Civ spielen? – Strategiespiel-Look
-   Dunkelblaue Panels, Goldrahmen, petrolfarbene Titelleisten, Hex-Hintergrund
+   Wann D&D spielen? – Fantasy-Rollenspiel-Look
+   Gewölbe aus dunklem Stein, Lederpanels mit Messingrahmen,
+   blutrote Titelleisten, Fackelschein, arkane Akzente
    ===================================================================== */
 
 :root {
-  /* Flächen */
-  --bg-deep: #0a1729;
-  --panel-top: #1a3658;
-  --panel-bottom: #10264a;
-  --panel-flat: #142c4a;
-  --well: #0b1a2e; /* eingelassene Flächen: Inputs, Schalter */
-  --cell: #15304f;
-  --cell-bottom: #11284a;
-  --cell-border: #2a4a70;
+  /* Flächen: dunkles Leder & Holz */
+  --bg-deep: #120c09;
+  --panel-top: #2c2018;
+  --panel-bottom: #1b130e;
+  --panel-flat: #241a13;
+  --well: #0f0a07; /* eingelassene Flächen: Inputs, Schalter */
+  --cell: #2a1f17;
+  --cell-bottom: #1f1610;
+  --cell-border: #4a3626;
 
   /* Metall & Akzente */
   --gold: #c9a55c;
   --gold-bright: #f0d48a;
   --gold-dark: #8a6a2e;
-  --teal-top: #2f7487;
-  --teal-bottom: #1b4a5d;
-  --cyan: #6fc3df;
+  --teal-top: #8a2320;   /* Titelleisten: Drachenblut */
+  --teal-bottom: #4e0f0d;
+  --cyan: #b79cff;       /* arkaner Akzent (Auswahl, Stufenaufstieg) */
+  --leather-top: #4a3526; /* Standard-Buttons */
+  --leather-bottom: #2e2018;
+  --leather-border: #6a4c34;
 
-  /* Text */
-  --text: #e8eef6;
-  --text-dim: #a9bbd0;
-  --muted: #6f88a3;
+  /* Text: Pergament */
+  --text: #f1e6d0;
+  --text-dim: #c9b79c;
+  --muted: #8e7a64;
 
   /* Status */
   --yes: #5cb85c;
@@ -37,30 +41,35 @@
   --chart-maybe: #b38a2a;
   --chart-maybe-hatch: #7d5f1a;
 
-  /* Wochenende */
-  --weekend: #1f3d6a;
-  --weekend-bottom: #192f58;
-  --weekend-text: #a9c8ff;
+  /* Wochenende: etwas wärmer, wie vom Kaminfeuer beschienen */
+  --weekend: #3a2418;
+  --weekend-bottom: #2a1a11;
+  --weekend-text: #f0b47a;
 
-  /* Civ-Ereignisse */
+  /* Ereignisse: Krit / Stufenaufstieg */
   --wonder-glow: rgba(240, 212, 138, .55);
-  --era-glow: rgba(111, 195, 223, .5);
-  --toast-bg: linear-gradient(180deg, #1c3a5e, #0f2440);
-  --overlay-bg: rgba(4, 10, 20, .8);
+  --era-glow: rgba(183, 156, 255, .5);
+  --toast-bg: linear-gradient(180deg, #33251b, #1c140e);
+  --overlay-bg: rgba(10, 6, 4, .82);
 
   /* Logbuch-Arten: Hintergrund oben/unten, Rand, Akzent */
   --log-slander-top: #3a1d24; --log-slander-bottom: #2a1219; --log-slander-border: #5a2a30; --log-slander: var(--no);
   --log-slander-active: linear-gradient(180deg, #7a2a24, #461410);
   --log-friendship-top: #1c3a26; --log-friendship-bottom: #12281a; --log-friendship-border: #2f5e3c; --log-friendship: var(--yes);
   --log-friendship-active: linear-gradient(180deg, #2e6b3e, #17402a);
-  --log-reconcile-top: #1d3442; --log-reconcile-bottom: #13242f; --log-reconcile-border: #355a6a; --log-reconcile: #9fd8e0;
-  --log-reconcile-active: linear-gradient(180deg, #3f7a88, #21495a);
+  --log-reconcile-top: #2a2238; --log-reconcile-bottom: #1b1626; --log-reconcile-border: #4a3d66; --log-reconcile: #cbb8ff;
+  --log-reconcile-active: linear-gradient(180deg, #5a4a8a, #33285a);
+
+  /* Texturen: feines Rauschen für Leder/Pergament, Steinquader für das Gewölbe */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  --stones: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='96'%3E%3Cg fill='none' stroke='%23000' stroke-opacity='.55' stroke-width='3'%3E%3Cpath d='M0 1.5H160M0 49.5H160M0 95H160M52 1.5V49.5M128 1.5V49.5M22 49.5V95M96 49.5V95'/%3E%3C/g%3E%3Cg fill='none' stroke='%23f0d48a' stroke-opacity='.05' stroke-width='1'%3E%3Cpath d='M0 4H160M0 52H160M55 4V47M131 4V47M25 52V93M99 52V93'/%3E%3C/g%3E%3C/svg%3E");
 
   --ease-out: cubic-bezier(.2, .9, .3, 1.15);
   --ease: cubic-bezier(.4, 0, .2, 1);
 
-  --font-display: 'Cinzel', 'Trajan Pro', Georgia, serif;
-  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-title: 'Grenze Gotisch', 'Almendra', Georgia, serif;
+  --font-display: 'Almendra', 'Palatino Linotype', Georgia, serif;
+  --font-body: 'Alegreya Sans', 'Trebuchet MS', system-ui, sans-serif;
 
   font-family: var(--font-body);
   color: var(--text);
@@ -69,16 +78,42 @@
 
 * { box-sizing: border-box; }
 
+/* Gewölbe bei Fackelschein: zwei warme Lichtkegel, Steinquader, Rauschen, dunkle Vignette */
 body {
   margin: 0;
   min-height: 100vh;
   background-color: var(--bg-deep);
   background-image:
-    radial-gradient(ellipse at 50% -10%, rgba(47, 116, 135, .35), transparent 60%),
-    radial-gradient(ellipse at 100% 100%, rgba(201, 165, 92, .08), transparent 50%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='%23ffffff' stroke-opacity='0.045' stroke-width='1.2'/%3E%3Cpath d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='%23ffffff' stroke-opacity='0.03' stroke-width='1.2'/%3E%3C/svg%3E");
+    radial-gradient(ellipse 60% 45% at 8% 0%, rgba(255, 140, 50, .22), transparent 70%),
+    radial-gradient(ellipse 60% 45% at 92% 0%, rgba(255, 140, 50, .18), transparent 70%),
+    radial-gradient(ellipse at 50% 120%, rgba(120, 20, 15, .35), transparent 60%),
+    radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(0, 0, 0, .65) 100%),
+    var(--grain),
+    var(--stones),
+    linear-gradient(180deg, #221812, #120c09);
   background-attachment: fixed;
 }
+/* Glutfunken, die langsam aufsteigen */
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 80%, rgba(255, 170, 80, .8), transparent),
+    radial-gradient(1px 1px at 27% 60%, rgba(255, 200, 120, .7), transparent),
+    radial-gradient(2px 2px at 45% 90%, rgba(255, 150, 60, .6), transparent),
+    radial-gradient(1px 1px at 63% 70%, rgba(255, 190, 110, .7), transparent),
+    radial-gradient(1.5px 1.5px at 81% 85%, rgba(255, 160, 70, .7), transparent),
+    radial-gradient(1px 1px at 92% 55%, rgba(255, 200, 120, .6), transparent);
+  background-size: 100% 100%;
+  animation: embers 14s linear infinite;
+  opacity: .7;
+}
+@keyframes embers {
+  0% { transform: translateY(0); opacity: 0; }
+  15% { opacity: .7; }
+  100% { transform: translateY(-40vh); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { body::before { animation: none; opacity: .4; } }
+#root { position: relative; z-index: 1; }
 
 .error { color: #ff8a80; }
 code { background: rgba(255, 255, 255, .08); padding: 1px 5px; border-radius: 4px; }
@@ -86,7 +121,7 @@ code { background: rgba(255, 255, 255, .08); padding: 1px 5px; border-radius: 4p
 /* ---------- Buttons ---------- */
 button {
   font: inherit; font-weight: 600; color: var(--text); cursor: pointer;
-  background: linear-gradient(180deg, #24497a, #163259);
+  background: linear-gradient(180deg, var(--leather-top), var(--leather-bottom));
   border: 1px solid var(--gold-dark); border-radius: 999px; padding: 6px 16px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 1px 2px rgba(0, 0, 0, .4);
   transition: background-color .18s, color .18s, border-color .18s, transform .12s, box-shadow .18s, filter .18s;
@@ -111,14 +146,14 @@ button:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2p
 /* ---------- Inputs ---------- */
 input {
   font: inherit; color: var(--text); background: var(--well);
-  border: 1px solid #2f4f78; border-radius: 6px; padding: 7px 10px;
+  border: 1px solid var(--leather-border); border-radius: 6px; padding: 7px 10px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, .4);
   transition: border-color .15s, box-shadow .15s;
 }
 input::placeholder, textarea::placeholder { color: var(--muted); }
 textarea {
   font: inherit; color: var(--text); background: var(--well); resize: none; width: 100%;
-  border: 1px solid #2f4f78; border-radius: 6px; padding: 6px 8px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, .4);
+  border: 1px solid var(--leather-border); border-radius: 6px; padding: 6px 8px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, .4);
 }
 textarea:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 4px rgba(0, 0, 0, .4), 0 0 0 3px rgba(201, 165, 92, .2); }
 input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 4px rgba(0, 0, 0, .4), 0 0 0 3px rgba(201, 165, 92, .2); }
@@ -167,7 +202,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .topbar {
   display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
   padding: 10px 18px; margin-bottom: 18px; border-radius: 6px;
-  background: linear-gradient(180deg, #13263f, #0a1627);
+  background: linear-gradient(180deg, #2a1d14, #150e0a);
   border: 1px solid var(--gold-dark); border-bottom: 2px solid var(--gold);
   box-shadow: 0 6px 18px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .06);
 }
@@ -179,7 +214,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .head {
   border-radius: 50%; object-fit: cover; object-position: center; flex-shrink: 0;
   display: inline-flex; align-items: center; justify-content: center;
-  border: 2px solid var(--well); background: #2a3f5c; box-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+  border: 2px solid var(--well); background: #3a2b1f; box-shadow: 0 1px 4px rgba(0, 0, 0, .5);
 }
 .head-fallback { color: #fff; font-weight: 700; font-family: var(--font-display); }
 
@@ -266,7 +301,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 }
 .day-number { font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--text-dim); }
 
-.day-weekend { background: linear-gradient(180deg, var(--weekend), var(--weekend-bottom)); border-color: #34558a; }
+.day-weekend { background: linear-gradient(180deg, var(--weekend), var(--weekend-bottom)); border-color: #6a4228; }
 .day-weekend .day-number { color: var(--weekend-text); }
 .day-other-month { opacity: .4; }
 .day.day-past { opacity: .35; filter: saturate(.3); }
@@ -280,9 +315,9 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .day-civ .day-number { color: var(--gold-bright); }
 .day-selected, .day-selected.day-civ {
   border-color: var(--cyan);
-  box-shadow: 0 0 0 2px var(--cyan), 0 0 16px rgba(111, 195, 223, .45) !important;
+  box-shadow: 0 0 0 2px var(--cyan), 0 0 16px rgba(183, 156, 255, .45) !important;
 }
-.day-selected:not(.day-civ) { background: linear-gradient(180deg, #1e4a6e, #173b5c); }
+.day-selected:not(.day-civ) { background: linear-gradient(180deg, #3b2a4f, #261b36); }
 
 /* Münz-Abzeichen für den Civ-Abend */
 .civ-badge {
@@ -307,14 +342,14 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 }
 .view-toggle {
   position: absolute; left: 26px; top: 50%; transform: translateY(-50%); display: inline-flex; padding: 2px;
-  background: var(--well); border: 1px solid #2f4f78; border-radius: 999px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, .5);
+  background: var(--well); border: 1px solid var(--leather-border); border-radius: 999px; box-shadow: inset 0 2px 4px rgba(0, 0, 0, .5);
 }
 .view-toggle button {
   border: 1px solid transparent; background: transparent; box-shadow: none; padding: 3px 12px;
   font-size: .8rem; color: var(--text-dim);
 }
 .view-toggle button.active {
-  background: linear-gradient(180deg, #24497a, #163259); border-color: var(--gold-dark); color: var(--gold-bright);
+  background: linear-gradient(180deg, var(--leather-top), var(--leather-bottom)); border-color: var(--gold-dark); color: var(--gold-bright);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 1px 2px rgba(0, 0, 0, .4);
 }
 
@@ -333,7 +368,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .week-list .day-weekend .day-weekday { color: var(--weekend-text); }
 .week-list .day .day-heads { flex: 1; grid-template-columns: repeat(4, max-content); justify-content: start; gap: 4px 10px; }
 .week-list .day .day-heads:empty::after {
-  content: 'Noch niemand eingetragen'; font-size: .85rem; font-style: italic; color: var(--muted);
+  content: 'Noch kein Held hat sich gemeldet'; font-size: .85rem; font-style: italic; color: var(--muted);
 }
 .week-list .day .civ-badge { order: 3; align-self: center; margin-left: auto; white-space: nowrap; }
 
@@ -384,8 +419,8 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .swap-in { animation: fade-up .2s var(--ease) both; }
 .day-chips { display: flex; flex-wrap: wrap; gap: 4px; }
 .chip {
-  font-size: .75rem; font-weight: 600; color: #bfe6f3; background: rgba(111, 195, 223, .12);
-  border: 1px solid rgba(111, 195, 223, .35); border-radius: 999px; padding: 2px 9px;
+  font-size: .75rem; font-weight: 600; color: #e2d6ff; background: rgba(183, 156, 255, .12);
+  border: 1px solid rgba(183, 156, 255, .35); border-radius: 999px; padding: 2px 9px;
   animation: pop-in .25s var(--ease-out) both;
 }
 .hint { margin: -4px 0 0; font-size: .74rem; color: var(--muted); }
@@ -400,7 +435,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 /* Segment-Schalter mit gleitendem Hintergrund */
 .segmented {
   position: relative; display: grid; grid-template-columns: repeat(3, 1fr); flex: 1;
-  background: var(--well); border: 1px solid #2f4f78; border-radius: 999px; padding: 3px;
+  background: var(--well); border: 1px solid var(--leather-border); border-radius: 999px; padding: 3px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, .5);
 }
 .segmented button {
@@ -464,7 +499,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .suggestion > button {
   width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; padding: 10px 12px;
   border-radius: 5px; font-weight: 400;
-  background: linear-gradient(180deg, #21497a, #183a62); border: 1px solid #2f5785;
+  background: linear-gradient(180deg, #33251b, #221810); border: 1px solid var(--leather-border);
 }
 .suggestion > button:not(:disabled):hover { border-color: var(--gold); transform: translateX(-3px); }
 /* Volle Runde: bronzefarben hinterlegt */
@@ -477,7 +512,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
   width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%;
   display: inline-flex; align-items: center; justify-content: center;
   font-family: var(--font-display); font-size: .95rem; font-weight: 700; color: var(--text-dim);
-  background: radial-gradient(circle at 35% 30%, #2c4f7c, #10233f); border: 2px solid var(--gold-dark);
+  background: radial-gradient(circle at 35% 30%, #5a4130, #1c140e); border: 2px solid var(--gold-dark);
   box-shadow: 0 1px 3px rgba(0, 0, 0, .6);
   animation: pop-in .35s var(--ease-out) both;
 }
@@ -602,7 +637,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 }
 .leaders-backdrop {
   position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; padding: 16px;
-  background: rgba(4, 10, 20, .72); backdrop-filter: blur(3px);
+  background: rgba(10, 6, 4, .72); backdrop-filter: blur(3px);
   animation: fade-in .2s both;
 }
 .leaders-backdrop.leaders-closing { animation: leaders-out .2s var(--ease) both; }
@@ -652,7 +687,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .leader-back {
   transform: rotateY(180deg);
   background:
-    radial-gradient(ellipse at 50% 20%, rgba(111, 195, 223, .08), transparent 55%),
+    radial-gradient(ellipse at 50% 20%, rgba(183, 156, 255, .08), transparent 55%),
     linear-gradient(180deg, #3d1a1a, #261010);
 }
 
@@ -760,7 +795,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 1px 2px rgba(0, 0, 0, .5);
 }
 .pill-gold { color: var(--gold-bright); background: linear-gradient(180deg, #2a2210, #15110a); }
-.pill-blue { color: var(--text); background: linear-gradient(180deg, #24497a, #163259); }
+.pill-blue { color: var(--text); background: linear-gradient(180deg, var(--leather-top), var(--leather-bottom)); }
 .leader-inner:hover .pill-blue { border-color: var(--gold); filter: brightness(1.15); }
 
 /* Rückseite */
@@ -893,7 +928,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .era-badge {
   display: inline-flex; flex-direction: column; gap: 3px; padding: 4px 12px 5px; cursor: help;
   border: 1px solid var(--gold-dark); border-radius: 999px;
-  background: linear-gradient(180deg, #17304f, #0d1d33);
+  background: linear-gradient(180deg, #2c1f16, #160f0b);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 1px 2px rgba(0, 0, 0, .4);
 }
 .era-badge .era-name {
@@ -929,7 +964,7 @@ input:focus { outline: none; border-color: var(--gold); box-shadow: inset 0 2px 
 .civ-overlay .civ-overlay-card {
   position: relative; text-align: center; padding: 28px 40px 18px; max-width: 560px; width: 100%;
   border: 2px solid var(--gold); border-radius: 8px;
-  background: linear-gradient(180deg, rgba(26, 54, 88, .96), rgba(16, 38, 74, .96));
+  background: linear-gradient(180deg, rgba(44, 32, 24, .97), rgba(27, 19, 14, .97));
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .6), 0 0 60px var(--wonder-glow), inset 0 0 0 1px rgba(240, 212, 138, .2);
   animation: civ-card-in .6s var(--ease-out) both;
 }
@@ -1045,14 +1080,14 @@ button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 /* Sehr schmal (≤360px): Civ-Abzeichen nur als Stern */
 @media (max-width: 360px) {
   .week-list .day .civ-badge-label { display: none; }
-  .week-list .day .civ-badge::before { content: '★'; }
+  .week-list .day .civ-badge::before { content: '⚔'; }
   .week-list .day .day-heads .head { width: 34px !important; height: 34px !important; }
 }
 
 /* ---------- Logbuch ---------- */
 .logbook-btn {
   position: relative;
-  background: linear-gradient(180deg, #3d5a4a, #23382c); border-color: var(--gold);
+  background: linear-gradient(180deg, #3d4a2a, #232c17); border-color: var(--gold);
   font-family: var(--font-display); letter-spacing: .05em; color: #f3e7c4;
 }
 .logbook-btn.has-unread { animation: logbook-nudge 3s 1s var(--ease) infinite; }
@@ -1077,7 +1112,7 @@ button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 .logbook-form .error { margin: 0; font-size: .8rem; }
 .logbook-kinds { display: flex; gap: 6px; flex-wrap: wrap; }
 .logbook-kind { padding: 4px 12px; font-size: .82rem; background: var(--well); border-color: var(--cell-border); color: var(--text-dim); }
-.logbook-kind.active { color: #f3e7c4; border-color: var(--gold); background: linear-gradient(180deg, #2f7487, #1b4a5d); box-shadow: 0 0 8px rgba(240, 212, 138, .25); }
+.logbook-kind.active { color: #f3e7c4; border-color: var(--gold); background: linear-gradient(180deg, var(--teal-top), var(--teal-bottom)); box-shadow: 0 0 8px rgba(240, 212, 138, .25); }
 .logbook-kind-slander.active { background: var(--log-slander-active); }
 .logbook-kind-friendship.active { background: var(--log-friendship-active); }
 .logbook-kind-reconcile.active { background: var(--log-reconcile-active); }
@@ -1248,7 +1283,7 @@ button.logbook-quote:not(:disabled):active { transform: none; }
   .calendar-panel .day .entry small {
     position: absolute; left: 50%; bottom: -3px; transform: translateX(-50%); margin: 0; z-index: 1;
     font-size: .58rem; line-height: 1.25; padding: 0 3px; border-radius: 999px;
-    background: rgba(5, 12, 24, .85); color: var(--text); white-space: nowrap; pointer-events: none;
+    background: rgba(10, 6, 4, .85); color: var(--text); white-space: nowrap; pointer-events: none;
   }
 
   /* Wochenansicht: sieben Zeilen teilen sich die Höhe, Köpfe aus der Zeilenhöhe */
@@ -1265,8 +1300,86 @@ button.logbook-quote:not(:disabled):active { transform: none; }
   .app > .quote-bar blockquote { font-size: .9rem; line-height: 1.35; }
   .app > .quote-bar figcaption { margin-top: 2px; font-size: .78rem; }
 }
-/* Schmale Zellen: nur „★ ab 20:00!“ statt „Civ-Abend ab 20:00!“ */
+/* Schmale Zellen: nur „⚔ ab 20:00!“ statt „D&D-Abend ab 20:00!“ */
 @container (max-width: 130px) {
   .calendar-panel .day .civ-badge-label { display: none; }
-  .calendar-panel .day .civ-badge::before { content: '★'; }
+  .calendar-panel .day .civ-badge::before { content: '⚔'; }
 }
+
+/* =====================================================================
+   D&D-Feinschliff: Texturen, Schriften, Pergament
+   Steht bewusst am Ende, damit diese Regeln bei gleicher Spezifität gewinnen.
+   ===================================================================== */
+
+/* Lederpanels mit feiner Maserung und Messingnieten in den Ecken */
+.panel, .popover, .topbar {
+  background-image: var(--grain), linear-gradient(180deg, var(--panel-top), var(--panel-bottom));
+}
+.topbar { background-image: var(--grain), linear-gradient(180deg, #2a1d14, #150e0a); position: relative; }
+.panel { position: relative; }
+.panel::after {
+  content: ''; position: absolute; inset: 5px; pointer-events: none; border-radius: 3px;
+  background:
+    radial-gradient(circle at 0 0, var(--gold) 0 2.5px, transparent 3px) top left / 10px 10px no-repeat,
+    radial-gradient(circle at 100% 0, var(--gold) 0 2.5px, transparent 3px) top right / 10px 10px no-repeat,
+    radial-gradient(circle at 0 100%, var(--gold) 0 2.5px, transparent 3px) bottom left / 10px 10px no-repeat,
+    radial-gradient(circle at 100% 100%, var(--gold) 0 2.5px, transparent 3px) bottom right / 10px 10px no-repeat;
+  opacity: .7;
+}
+
+/* Titelleisten: blutrotes Banner mit Maserung und doppelter Messingkante */
+.panel-header, .popover-header {
+  background-image: var(--grain), linear-gradient(180deg, var(--teal-top), var(--teal-bottom));
+  box-shadow: inset 0 1px 0 rgba(255, 220, 180, .18), inset 0 -3px 0 rgba(0, 0, 0, .25), 0 2px 6px rgba(0, 0, 0, .45);
+}
+.panel-header h2, .panel-header h3 { letter-spacing: .03em; font-weight: 700; }
+.panel-header::before, .panel-header::after { background: var(--gold-bright); }
+
+/* Spieltitel in gotischer Schrift mit Würfel davor */
+.game-title {
+  font-family: var(--font-title); font-weight: 800; letter-spacing: .02em; line-height: 1.05;
+  display: inline-flex; align-items: center; gap: .3em;
+}
+.title-die {
+  width: 1.05em; height: 1.05em; flex: none; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, .7));
+  animation: die-roll 1.1s var(--ease-out) both;
+}
+.game-title:hover .title-die { animation: die-roll .9s var(--ease-out); }
+@keyframes die-roll { from { transform: rotate(-540deg) scale(.4); } }
+.whoami-name, .portrait-name, .leader-name { letter-spacing: .01em; }
+
+/* Login: Pergamentrolle mit eingeprägten Heldenporträts */
+.login-panel .panel-body {
+  background-image:
+    var(--grain),
+    radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(90, 55, 20, .45) 100%),
+    linear-gradient(180deg, #e9d8b4, #d8c194 60%, #c9ad7c);
+  color: #3a2614;
+}
+.login-panel .error { color: #8a1a14; font-weight: 700; }
+.login-panel input { background: #fbf3e0; color: #2a1a0c; border-color: #9c7a48; box-shadow: inset 0 2px 4px rgba(90, 55, 20, .25); }
+.login-panel input::placeholder { color: #8f7552; }
+.portrait-card { background-image: var(--grain), linear-gradient(180deg, #6a1f1c, #3a0f0d); }
+
+/* D&D-Abend: Krit-Gold mit pulsierendem Glanz */
+.day-civ { background-image: var(--grain), linear-gradient(180deg, #5a4520, #2e2210); }
+.civ-badge { font-family: var(--font-display); letter-spacing: .02em; }
+
+/* Kalenderzahlen und Rangkreise im Almendra-Stil */
+.day-number, .rank, .score b, .leader-totals dd, .wd-value { font-weight: 700; }
+
+/* Heldenkarten: Charakterbogen auf Leder */
+.leader-face { background-image: var(--grain), radial-gradient(ellipse at 50% 30%, rgba(240, 212, 138, .1), transparent 55%), linear-gradient(180deg, #4e1c18, #2f0f0d 70%, #240b09); }
+.leader-back { background-image: var(--grain), radial-gradient(ellipse at 50% 20%, rgba(183, 156, 255, .1), transparent 55%), linear-gradient(180deg, #3b1714, #240b09); }
+
+/* Ladebildschirm-Zitate: kursive Buchschrift */
+.quote-bar blockquote { font-style: italic; font-weight: 400; font-size: 1.05rem; }
+.app > .quote-bar blockquote { font-size: .95rem; }
+
+/* Einblendungen: Titel gotisch, Kicker in Krit-Gold */
+.civ-overlay .civ-overlay-title { font-family: var(--font-title); letter-spacing: .02em; }
+.civ-overlay-wonder .civ-overlay-kicker { color: var(--gold-bright); }
+.civ-overlay .civ-overlay-card { background-image: var(--grain), linear-gradient(180deg, rgba(44, 32, 24, .97), rgba(27, 19, 14, .97)); }
+
+/* Scrollbalken passend zum Leder */
+* { scrollbar-color: var(--gold-dark) transparent; }

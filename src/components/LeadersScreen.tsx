@@ -69,17 +69,17 @@ export function LeadersScreen({ me, onClose }: Props) {
       <section
         className="panel leaders"
         role="dialog"
-        aria-label="Anführer"
+        aria-label="Die Heldengruppe"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="panel-header leaders-header">
-          <h2>Anführer</h2>
+          <h2>Die Heldengruppe</h2>
           <button className="close-btn" onClick={() => setClosing(true)} aria-label="Schließen">
             ×
           </button>
         </div>
         <p className="leaders-hint">
-          {phone ? 'Wischen zum Blättern, Tippen für die Statistik' : 'Klick auf eine Karte für die Statistik'}
+          {phone ? 'Wischen zum Blättern, Tippen für den Charakterbogen' : 'Klick auf eine Karte für den Charakterbogen'}
         </p>
         {error && <p className="error">{error}</p>}
 
@@ -125,7 +125,7 @@ const THROW_SPEED = 0.6 // … oder px/ms Schwung
 
 /**
  * Kartenstapel wie bei Dating-Apps: Karte zur Seite ziehen und loslassen.
- * Links = nächster Anführer, rechts = vorheriger. Darunter liegt jeweils die Karte, die als Nächstes kommt.
+ * Links = nächster Held, rechts = vorheriger. Darunter liegt jeweils die Karte, die als Nächstes kommt.
  */
 function LeaderDeck({ players, render }: { players: Player[]; render: (p: Player) => ReactNode }) {
   const n = players.length
@@ -230,8 +230,8 @@ function LeaderDeck({ players, render }: { players: Player[]; render: (p: Player
             >
               {isTop && (
                 <>
-                  <span className="deck-stamp deck-stamp-ally">Bündnis</span>
-                  <span className="deck-stamp deck-stamp-denounce">Anprangern</span>
+                  <span className="deck-stamp deck-stamp-ally">Gefährte</span>
+                  <span className="deck-stamp deck-stamp-denounce">Verräter</span>
                 </>
               )}
               {render(p)}
@@ -282,7 +282,7 @@ function LeaderCard({ me, player, stats, flipped, onToggle, delay }: CardProps) 
           }
         }}
         aria-pressed={flipped}
-        aria-label={`${player.name}: ${flipped ? 'Übersicht zeigen' : 'Statistik zeigen'}`}
+        aria-label={`${player.name}: ${flipped ? 'Heldenkarte zeigen' : 'Charakterbogen zeigen'}`}
       >
         {/* ---------- Vorderseite ---------- */}
         <div className="leader-face leader-front" aria-hidden={flipped}>
@@ -293,7 +293,7 @@ function LeaderCard({ me, player, stats, flipped, onToggle, delay }: CardProps) 
             footer={
               <>
                 <span className="pill-gold">{stats.yes} × Kann</span>
-                <span className="pill-blue">Statistik ▸</span>
+                <span className="pill-blue">Charakterbogen ▸</span>
               </>
             }
           />
@@ -302,7 +302,7 @@ function LeaderCard({ me, player, stats, flipped, onToggle, delay }: CardProps) 
         {/* ---------- Rückseite ---------- */}
         <div className="leader-face leader-back" aria-hidden={!flipped}>
           <div className="leader-titles">
-            <span className="leader-role">Statistik</span>
+            <span className="leader-role">Charakterbogen</span>
             <span className="leader-name">{player.name}</span>
           </div>
 
@@ -322,7 +322,7 @@ function LeaderCard({ me, player, stats, flipped, onToggle, delay }: CardProps) 
           {total > 0 ? (
             <WeekdayChart counts={stats.counts} favorite={stats.favorite} />
           ) : (
-            <p className="leader-empty">Noch keine Daten für eine Statistik.</p>
+            <p className="leader-empty">Noch keine Abenteuer, noch keine Werte.</p>
           )}
 
           <dl className="leader-totals">

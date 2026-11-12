@@ -17,8 +17,9 @@ import { QuoteBar } from './components/QuoteBar'
 import { loadHeads } from './lib/heads'
 import { LogbookProvider } from './lib/logbook'
 import { LogbookButton } from './components/Logbook'
+import { D20 } from './components/D20'
 
-const PLAYER_KEY = 'wanncivspielen.player'
+const PLAYER_KEY = 'wanndnd.player'
 
 function loadPlayer(): PlayerId | null {
   try {
@@ -62,7 +63,7 @@ export default function App() {
   if (!isConfigured) {
     return (
       <div className="login">
-        <h1 className="game-title">Wann Civ spielen?</h1>
+        <h1 className="game-title"><D20 />Wann D&amp;D spielen?</h1>
         <p className="error">
           Supabase ist nicht konfiguriert. Lege eine <code>.env.local</code> nach Vorlage von{' '}
           <code>.env.example</code> an.
@@ -81,11 +82,11 @@ export default function App() {
           <LeaderSheetProvider>
             <div className="app">
               <header className="topbar">
-                <h1 className="game-title">Wann Civ spielen?</h1>
+                <h1 className="game-title"><D20 />Wann D&amp;D spielen?</h1>
                 <div className="whoami">
                   <EraBadge />
                   <button className="leaders-btn" onClick={() => setShowLeaders(true)}>
-                    ✦ Anführer
+                    ⚔ Helden
                   </button>
                   <LogbookButton key={me} me={me} />
                   <HoverCard player={playerById(me)}>
@@ -94,8 +95,8 @@ export default function App() {
                     </span>
                   </HoverCard>
                   <span className="whoami-name">{playerById(me).name}</span>
-                  <button onClick={() => pick(null)}>Wechseln</button>
-                  <button onClick={() => supabase.auth.signOut()}>Logout</button>
+                  <button onClick={() => pick(null)}>Held wechseln</button>
+                  <button onClick={() => supabase.auth.signOut()}>Taverne verlassen</button>
                 </div>
               </header>
               <MonthCalendar me={me} />

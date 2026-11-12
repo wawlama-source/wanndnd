@@ -145,7 +145,7 @@ export function useLogbook() {
 
 // ---------- Gelesen-Stand pro Spieler (nur in diesem Browser) ----------
 
-const readKey = (me: PlayerId) => `wanncivspielen.logbook.read.${me}`
+const readKey = (me: PlayerId) => `wanndnd.logbook.read.${me}`
 
 export function loadLastRead(me: PlayerId): string {
   try {

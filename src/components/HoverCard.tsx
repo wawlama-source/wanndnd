@@ -30,7 +30,7 @@ interface Props {
 }
 
 /**
- * Zeigt beim Hovern mit der Maus die Anführer-Karte als Tooltip.
+ * Zeigt beim Hovern mit der Maus die Heldenkarte als Tooltip.
  * Nach LOCK_AFTER ms rastet sie ein: dann kann man hineinfahren, scrollen und klicken.
  * Auf Touch-Geräten öffnet Antippen stattdessen die Detailansicht (LeaderSheet).
  */
@@ -198,7 +198,7 @@ function Card({ cardRef, player, entry, anchor, locked, onDone }: CardProps) {
     <div
       ref={cardRef}
       role={locked ? 'dialog' : 'tooltip'}
-      aria-label={`Anführer ${player.name}`}
+      aria-label={`Held ${player.name}`}
       className={classes}
       style={pos ? { top: pos.top, left: pos.left } : undefined}
       // Klicks im Tooltip sollen nicht beim Tag (o. Ä.) darunter im React-Baum ankommen

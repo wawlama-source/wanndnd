@@ -69,12 +69,12 @@ export function Suggestions({ all, onPick }: Props) {
   return (
     <aside className="panel suggestions">
       <div className="panel-header">
-        <h3>Beste Termine</h3>
+        <h3>Beste Questtermine</h3>
       </div>
-      <p className="suggestions-sub">Die nächsten 8 Wochen</p>
+      <p className="suggestions-sub">Was die Kristallkugel für die nächsten 8 Wochen sieht</p>
 
       {list.length === 0 && (
-        <p className="suggestions-empty">Noch keine Zusagen. Trag ein, wann du kannst!</p>
+        <p className="suggestions-empty">Die Questtafel ist noch leer. Trag ein, wann du kannst!</p>
       )}
 
       <ol ref={ref}>
@@ -114,7 +114,7 @@ export function Suggestions({ all, onPick }: Props) {
                   </span>
                   {full && (
                     <span className="suggestion-civ">
-                      Civ-Abend{s.start ? ` ab ${s.start}` : ''}!
+                      D&amp;D-Abend{s.start ? ` ab ${s.start}` : ''}!
                     </span>
                   )}
                 </span>
