@@ -1,6 +1,6 @@
 -- Einmal im Supabase SQL-Editor ausführen.
 create table if not exists availability (
-  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
+  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'gerrit', 'david')),
   day        date not null,
   status     text not null check (status in ('yes','maybe','no')),
   from_time  time,
@@ -26,9 +26,9 @@ alter publication supabase_realtime add table availability;
 -- ---------------------------------------------------------------
 create table if not exists facts (
   id         uuid primary key default gen_random_uuid(),
-  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
+  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'gerrit', 'david')),
   text       text not null check (char_length(text) between 1 and 160),
-  author     text not null check (author in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
+  author     text not null check (author in ('lukas','philipp','yannick','ansgar', 'gerrit', 'david')),
   created_at timestamptz not null default now()
 );
 
@@ -45,7 +45,7 @@ alter publication supabase_realtime add table facts;
 -- ---------------------------------------------------------------
 -- Kopfbilder: privater Storage-Bucket, nur nach Login lesbar.
 -- Danach im Dashboard unter Storage → heads die Dateien
--- lukas.jpg, philipp.jpg, yannick.jpg, ansgar.jpg, hannes.jpg, david.jpg hochladen.
+-- lukas.jpg, philipp.jpg, yannick.jpg, ansgar.jpg, gerrit.jpg, david.jpg hochladen.
 -- Persönliche Startdaten (Fakten) stehen in seed.local.sql (nicht im Repo).
 -- ---------------------------------------------------------------
 insert into storage.buckets (id, name, public)
@@ -61,7 +61,7 @@ create policy "heads lesen" on storage.objects
 -- ---------------------------------------------------------------
 create table if not exists logbook (
   id         uuid primary key default gen_random_uuid(),
-  author     text not null check (author in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
+  author     text not null check (author in ('lukas','philipp','yannick','ansgar', 'gerrit', 'david')),
   kind       text not null default 'announce' check (kind in ('announce','slander','report')),
   text       text not null check (char_length(text) between 1 and 500),
   created_at timestamptz not null default now()
@@ -82,7 +82,7 @@ alter table logbook add column if not exists quote_id uuid references logbook(id
 
 create table if not exists logbook_reactions (
   entry_id   uuid not null references logbook(id) on delete cascade,
-  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
+  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'gerrit', 'david')),
   emoji      text not null check (char_length(emoji) between 1 and 16),
   created_at timestamptz not null default now(),
   primary key (entry_id, player, emoji)
@@ -103,4 +103,33 @@ alter table logbook drop constraint if exists logbook_kind_check;
 alter table logbook add constraint logbook_kind_check
   check (kind in ('announce','report','friendship','reconcile','slander'));
 alter table logbook add column if not exists targets text[] not null default '{}'
-  check (targets <@ array['lukas','philipp','yannick','ansgar', 'hannes', 'david']);
+  check (targets <@ array['lukas','philipp','yannick','ansgar', 'gerrit', 'david']);
+
+-- ---------------------------------------------------------------
+-- Spielerwechsel: Hannes → Gerrit (für bestehende Datenbanken).
+-- Ersetzt die Spieler-Checks; vorhandene Einträge von hannes werden gelöscht.
+-- ---------------------------------------------------------------
+delete from logbook_reactions where player = 'hannes';
+delete from availability where player = 'hannes';
+delete from facts where player = 'hannes' or author = 'hannes';
+delete from logbook where author = 'hannes';
+update logbook set targets = array_remove(targets, 'hannes') where 'hannes' = any(targets);
+
+alter table availability drop constraint if exists availability_player_check;
+alter table availability add constraint availability_player_check
+  check (player in ('lukas','philipp','yannick','ansgar','gerrit','david'));
+alter table facts drop constraint if exists facts_player_check;
+alter table facts add constraint facts_player_check
+  check (player in ('lukas','philipp','yannick','ansgar','gerrit','david'));
+alter table facts drop constraint if exists facts_author_check;
+alter table facts add constraint facts_author_check
+  check (author in ('lukas','philipp','yannick','ansgar','gerrit','david'));
+alter table logbook drop constraint if exists logbook_author_check;
+alter table logbook add constraint logbook_author_check
+  check (author in ('lukas','philipp','yannick','ansgar','gerrit','david'));
+alter table logbook_reactions drop constraint if exists logbook_reactions_player_check;
+alter table logbook_reactions add constraint logbook_reactions_player_check
+  check (player in ('lukas','philipp','yannick','ansgar','gerrit','david'));
+alter table logbook drop constraint if exists logbook_targets_check;
+alter table logbook add constraint logbook_targets_check
+  check (targets <@ array['lukas','philipp','yannick','ansgar','gerrit','david']);

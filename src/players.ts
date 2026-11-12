@@ -1,5 +1,5 @@
 // Muss zu den check-Constraints in supabase/schema.sql passen.
-export type PlayerId = 'lukas' | 'philipp' | 'yannick' | 'ansgar' | 'hannes' | 'david'
+export type PlayerId = 'lukas' | 'philipp' | 'yannick' | 'ansgar' | 'gerrit' | 'david'
 
 export interface Player {
   id: PlayerId
@@ -17,7 +17,7 @@ export const PLAYERS: Player[] = [
   { id: 'philipp', name: 'Philipp', title: 'Abenteurer', color: '#2a9d8f', head: `${heads}philipp.jpg` },
   { id: 'yannick', name: 'Yannick', title: 'Abenteurer', color: '#e9c46a', head: `${heads}yannick.jpg` },
   { id: 'ansgar', name: 'Ansgar', title: 'Abenteurer', color: '#6a4c93', head: `${heads}ansgar.jpg` },
-  { id: 'hannes', name: 'Hannes', title: 'Abenteurer', color: '#457b9d', head: `${heads}hannes.jpg` },
+  { id: 'gerrit', name: 'Gerrit', title: 'Abenteurer', color: '#457b9d', head: `${heads}gerrit.jpg` },
   { id: 'david', name: 'David', title: 'Abenteurer', color: '#b5838d', head: `${heads}david.jpg` },
 ]
 

@@ -1,6 +1,6 @@
 # Wann D&D spielen?
 
-Verfügbarkeits-Kalender für die D&D-Runde von Lukas, Philipp, Yannick, Ansgar, Hannes und David. React (Vite) auf GitHub Pages, Daten in Supabase.
+Verfügbarkeits-Kalender für die D&D-Runde von Lukas, Philipp, Yannick, Ansgar, Gerrit und David. React (Vite) auf GitHub Pages, Daten in Supabase.
 
 ## Einrichtung
 
@@ -16,5 +16,5 @@ Verfügbarkeits-Kalender für die D&D-Runde von Lukas, Philipp, Yannick, Ansgar,
 ## Kopfbilder
 
 Die Fotos sind nicht im Repo. Online liegen sie im privaten Supabase-Storage-Bucket `heads` als
-`lukas.jpg`, `philipp.jpg`, `yannick.jpg`, `ansgar.jpg`, `hannes.jpg` und `david.jpg` (256×256) und sind nur nach dem Login abrufbar.
+`lukas.jpg`, `philipp.jpg`, `yannick.jpg`, `ansgar.jpg`, `gerrit.jpg` und `david.jpg` (256×256) und sind nur nach dem Login abrufbar.
 Lokal kann man sie zusätzlich unter `public/heads/` ablegen (gitignored). Ohne Bild wird ein farbiger Kreis mit Initiale angezeigt.

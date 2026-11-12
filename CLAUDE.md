@@ -1,6 +1,6 @@
 # CLAUDE.md – Wann D&D spielen?
 
-Kleine Web-App, mit der sechs Freunde (Lukas, Philipp, Yannick, Ansgar, Hannes, David) eintragen, an welchen Tagen und ab wann sie Zeit für eine Runde Dungeons & Dragons haben (hervorgegangen aus der Civ-Version „Wann Civ spielen?“). Sie ersetzt das Abstimmen im Gruppenchat. Die App ist für diese sechs Leute gebaut, nicht für die Allgemeinheit. Pragmatik und Spaß gehen vor Skalierbarkeit.
+Kleine Web-App, mit der sechs Freunde (Lukas, Philipp, Yannick, Ansgar, Gerrit, David) eintragen, an welchen Tagen und ab wann sie Zeit für eine Runde Dungeons & Dragons haben (hervorgegangen aus der Civ-Version „Wann Civ spielen?“). Sie ersetzt das Abstimmen im Gruppenchat. Die App ist für diese sechs Leute gebaut, nicht für die Allgemeinheit. Pragmatik und Spaß gehen vor Skalierbarkeit.
 
 ## Zusammenarbeit
 
