@@ -1,6 +1,6 @@
 -- Einmal im Supabase SQL-Editor ausführen.
 create table if not exists availability (
-  player     text not null check (player in ('max','julian','yannick','eric')),
+  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
   day        date not null,
   status     text not null check (status in ('yes','maybe','no')),
   from_time  time,
@@ -26,9 +26,9 @@ alter publication supabase_realtime add table availability;
 -- ---------------------------------------------------------------
 create table if not exists facts (
   id         uuid primary key default gen_random_uuid(),
-  player     text not null check (player in ('max','julian','yannick','eric')),
+  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
   text       text not null check (char_length(text) between 1 and 160),
-  author     text not null check (author in ('max','julian','yannick','eric')),
+  author     text not null check (author in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
   created_at timestamptz not null default now()
 );
 
@@ -61,7 +61,7 @@ create policy "heads lesen" on storage.objects
 -- ---------------------------------------------------------------
 create table if not exists logbook (
   id         uuid primary key default gen_random_uuid(),
-  author     text not null check (author in ('max','julian','yannick','eric')),
+  author     text not null check (author in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
   kind       text not null default 'announce' check (kind in ('announce','slander','report')),
   text       text not null check (char_length(text) between 1 and 500),
   created_at timestamptz not null default now()
@@ -82,7 +82,7 @@ alter table logbook add column if not exists quote_id uuid references logbook(id
 
 create table if not exists logbook_reactions (
   entry_id   uuid not null references logbook(id) on delete cascade,
-  player     text not null check (player in ('max','julian','yannick','eric')),
+  player     text not null check (player in ('lukas','philipp','yannick','ansgar', 'hannes', 'david')),
   emoji      text not null check (char_length(emoji) between 1 and 16),
   created_at timestamptz not null default now(),
   primary key (entry_id, player, emoji)
@@ -103,4 +103,4 @@ alter table logbook drop constraint if exists logbook_kind_check;
 alter table logbook add constraint logbook_kind_check
   check (kind in ('announce','report','friendship','reconcile','slander'));
 alter table logbook add column if not exists targets text[] not null default '{}'
-  check (targets <@ array['max','julian','yannick','eric']);
+  check (targets <@ array['lukas','philipp','yannick','ansgar', 'hannes', 'david']);
